@@ -25,16 +25,16 @@ package
 
       b = new FlxButton(0, b.y + b.height + 10, "PM Box (O)", function():void {
         printTheError(function():void {
-          FlxG.log("* showPrivateMessageBox with object");
-          G.api.kongregate.services.showPrivateMessageBox({content: "Test PM (O)", image_uri: "http://i.imgur.com/zKOid.gif"});
+          FlxG.log("* showInvitationBox with object");
+          G.api.kongregate.services.showInvitationBox({content: "Test PM (O)", image_uri: "http://i.imgur.com/zKOid.gif"});
         });
       });
       add(b);
 
       b = new FlxButton(0, b.y + b.height, "PM Box (S)", function():void {
         printTheError(function():void {
-          FlxG.log("* showPrivateMessageBox with string");
-          G.api.kongregate.services.showPrivateMessageBox("Test PM (S)");
+          FlxG.log("* showInvitationBox with string");
+          G.api.kongregate.services.showInvitationBox("Test PM (S)");
         });
       });
       add(b);
