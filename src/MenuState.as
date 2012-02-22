@@ -5,35 +5,83 @@ package
   public class MenuState extends FlxState
   {
     override public function create():void {
-      var button:FlxButton = new StartButton(0,0);
-      FlxG.log("initialized");
-      button.onUp = function():void {
-        printTheError(function():void {
-          G.api.kongregate.services.showFeedPostBox("TEST Feed Post", "http://i.imgur.com/zKOid.gif");
-        });
-      }
-      add(button);
+      FlxG.log("* initialized *");
 
-      button = new StartButton(0, 50);
-      button.onUp = function():void {
+      var b:FlxButton = new FlxButton(0,10, "Feed Post (O)", function():void {
         printTheError(function():void {
-          G.api.kongregate.services.showWhisperBox("TEST Whisper");
+          FlxG.log("* showFeedPostBox with object");
+          G.api.kongregate.services.showFeedPostBox({content: "Super Feed Post! (O)", image_uri: "http://i.imgur.com/zKOid.gif"});
         });
-      }
-      add(button);
+      });
+      add(b);
 
-      button = new StartButton(0, 100);
-      button.onUp = function():void {
+      b = new FlxButton(0, b.y + b.height, "Feed Post (S)", function():void {
         printTheError(function():void {
-          FlxG.log("**kongregate:");
+          FlxG.log("* showFeedPostBox with string");
+          G.api.kongregate.services.showFeedPostBox("Super Feed Post! (S)");
+        });
+      });
+      add(b);
+
+      b = new FlxButton(0, b.y + b.height + 10, "PM Box (O)", function():void {
+        printTheError(function():void {
+          FlxG.log("* showPrivateMessageBox with object");
+          G.api.kongregate.services.showPrivateMessageBox({content: "Test PM (O)", image_uri: "http://i.imgur.com/zKOid.gif"});
+        });
+      });
+      add(b);
+
+      b = new FlxButton(0, b.y + b.height, "PM Box (S)", function():void {
+        printTheError(function():void {
+          FlxG.log("* showPrivateMessageBox with string");
+          G.api.kongregate.services.showPrivateMessageBox("Test PM (S)");
+        });
+      });
+      add(b);
+
+      b = new FlxButton(100, 10, "Shout Box (O)", function():void {
+        printTheError(function():void {
+          FlxG.log("* showShoutBox with string");
+          G.api.kongregate.services.showShoutBox({content: "Test Shout (O)"});
+        });
+      });
+      add(b);
+
+      b = new FlxButton(b.x, b.y + b.height, "Shout Box (S)", function():void {
+        printTheError(function():void {
+          FlxG.log("* showShoutBox with object");
+          G.api.kongregate.services.showShoutBox("Test Shout (S)");
+        });
+      });
+      add(b);
+
+      b = new FlxButton(b.x, b.y + b.height + 10, "PM (O)", function():void {
+        printTheError(function():void {
+          FlxG.log("* privateMessage with object");
+          G.api.kongregate.services.privateMessage({content: "Test PM (O)"});
+        });
+      });
+      add(b);
+
+      b = new FlxButton(b.x, b.y + b.height, "PM (S)", function():void {
+        printTheError(function():void {
+          FlxG.log("* privateMessage with string");
+          G.api.kongregate.services.privateMessage("Test PM (S)");
+        });
+      });
+      add(b);
+
+      b = new FlxButton(FlxG.width/2 - b.width/2, b.y + b.height + 20, "API Status", function():void {
+        printTheError(function():void {
+          FlxG.log("* KONGREGATE API STATUS *");
+          FlxG.log("* kongregate:");
           FlxG.log(G.api.kongregate);
-          FlxG.log("**kongregate.services:");
+          FlxG.log("* kongregate.services:");
           FlxG.log(G.api.kongregate.services);
-          FlxG.log("**calling showShoutBox:");
-          G.api.kongregate.services.showShoutBox("TEST Shout");
+          FlxG.log("* ==== *\n");
         });
-      }
-      add(button);
+      });
+      add(b);
 
       FlxG.mouse.show();
     }
