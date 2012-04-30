@@ -10,7 +10,7 @@ package
       var b:FlxButton = new FlxButton(0,10, "Feed Post (O)", function():void {
         printTheError(function():void {
           FlxG.log("* showFeedPostBox with object");
-          G.api.kongregate.services.showFeedPostBox({content: "Super Feed Post! (O)", image_uri: "http://i.imgur.com/zKOid.gif"});
+          G.api.kongregate.services.showFeedPostBox({content: "Super Feed Post! (O)", image_uri: "http://i.imgur.com/zKOid.gif", kv_params:{kavinsky:"nightcall", black:"beans"}});
         });
       });
       add(b);
