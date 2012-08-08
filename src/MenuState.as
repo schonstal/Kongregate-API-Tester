@@ -1,6 +1,7 @@
 package
 {
   import org.flixel.*;
+  import flash.display.StageDisplayState;
 
   public class MenuState extends FlxState
   {
@@ -10,7 +11,7 @@ package
       var b:FlxButton = new FlxButton(0,10, "Feed Post (O)", function():void {
         printTheError(function():void {
           FlxG.log("* showFeedPostBox with object");
-          G.api.kongregate.services.showFeedPostBox({content: "Super Feed Post! (O)", image_uri: "http://i.imgur.com/zKOid.gif", kv_params:{kavinsky:"nightcall", black:"beans"}});
+          G.api.kongregate.services.showFeedPostBox({content: "Mon groupe a atteint un nouveau lieu : la Croisée du Moulin ! Cliquez ici pour obtenir votre récompense !", image_uri: "http://i.imgur.com/zKOid.gif", kv_params:{kavinsky:"nightcall", black:"beans"}});
         });
       });
       add(b);
@@ -83,7 +84,32 @@ package
       });
       add(b);
 
+      b = new FlxButton(FlxG.width/2 - b.width/2, b.y + b.height + 2, "FULLSCREEN!", function():void {
+        printTheError(function():void {
+          FlxG.stage.displayState = StageDisplayState.FULL_SCREEN;
+        });
+      });
+      add(b);
+
+      b = new FlxButton(FlxG.width/2 - b.width/2, b.y + b.height + 2, "Buy \"test\"", function():void {
+        printTheError(function():void {
+          G.api.kongregate.mtx.purchaseItems(["test"], onPurchaseResult);
+        });
+      });
+      add(b);
+
+      b = new FlxButton(FlxG.width - b.width, 10, "Shared Link", function():void {
+        printTheError(function():void {
+          G.api.kongregate.services.sendSharedLink("8u77", "softness=2&roundness=6", "Little Big", "Butt", "July 11, 2001", {"Difficulty": "Hard", "Arena": "The Buttopolis"});
+        });
+      });
+      add(b);
+
       FlxG.mouse.show();
+    }
+
+    public function onPurchaseResult(result:Object):void {
+      FlxG.log("Purchase success:" + result.success);
     }
 
     public function printTheError(callback:Function):void {
