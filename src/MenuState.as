@@ -100,7 +100,7 @@ package
 
       b = new FlxButton(FlxG.width - b.width, 10, "Shared Link", function():void {
         printTheError(function():void {
-          G.api.kongregate.services.sendSharedLink("8u77", "softness=2&roundness=6", "Little Big", "Butt", "July 11, 2001", {"Difficulty": "Hard", "Arena": "The Buttopolis"});
+          G.api.kongregate.services.sendSharedLink("8u77", "softness=2&roundness=6", "Little Big", "Butt", "July 11, 2021", {"Difficulty": "Hard", "Arena": "The Buttopolis"});
         });
       });
       add(b);
