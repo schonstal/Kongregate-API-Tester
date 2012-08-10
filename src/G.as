@@ -5,6 +5,7 @@ package
     public class G
     {
         public var _api:KongApi;
+        public var _params:Object;
 
         private static var _instance:G = null;
 
@@ -25,6 +26,14 @@ package
 
         public static function set api(value:KongApi):void {
             instance._api = value;
+        }
+
+        public static function get params():Object {
+            return instance._params;
+        }
+
+        public static function set params(value:Object):void {
+            instance._params = value;
         }
     }
 }

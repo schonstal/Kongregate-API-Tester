@@ -100,7 +100,21 @@ package
 
       b = new FlxButton(FlxG.width - b.width, 10, "Shared Link", function():void {
         printTheError(function():void {
-          G.api.kongregate.services.sendSharedLink("8u77", "softness=2&roundness=6", "Little Big", "Butt", "July 11, 2021", {"Difficulty": "Hard", "Arena": "The Buttopolis"});
+          var id:Number = Math.random();
+          G.api.kongregate.services.sendSharedLink("8u77 " + id, "kv_softness=2&kv_roundness=6", "Little Big", "Butt", "July 11, 2021", {"Difficulty": "Hard", "Arena": "The Buttopolis"});
+          FlxG.log("Created shared link with id '8u77 " + id + "'");
+        });
+      });
+      add(b);
+
+
+      b = new FlxButton(FlxG.width - b.width, b.y + b.height, "Print Params", function():void {
+        printTheError(function():void {
+          FlxG.log("params: " + G.api.paramObj);
+          if(G.api.paramObj.kv_roundness && G.api.paramObj.kv_softness) {
+            FlxG.log("Roundness: " + G.api.paramObj.kv_roundness);
+            FlxG.log("Softness: " + G.api.paramObj.kv_softness);
+          }
         });
       });
       add(b);

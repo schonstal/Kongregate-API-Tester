@@ -11,12 +11,14 @@ package
      
     public class KongApi extends Sprite
     {
+        public var paramObj:Object;
+
         public function KongApi() { }
 
         public function init():void
         {
             // Pull the API path from the FlashVars
-            var paramObj:Object = LoaderInfo(root.loaderInfo).parameters;
+            paramObj = LoaderInfo(root.loaderInfo).parameters;
              
             // The API path. The "shadow" API will load if testing locally. 
             var apiPath:String = paramObj.kongregate_api_path || 
