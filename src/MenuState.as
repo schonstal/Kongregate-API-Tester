@@ -11,7 +11,7 @@ package
       var b:FlxButton = new FlxButton(0,10, "Feed Post (O)", function():void {
         printTheError(function():void {
           FlxG.log("* showFeedPostBox with object");
-          G.api.kongregate.services.showFeedPostBox({content: "Mon groupe a atteint un nouveau lieu : la Croisée du Moulin ! Cliquez ici pour obtenir votre récompense !", image_uri: "http://i.imgur.com/zKOid.gif", kv_params:{kavinsky:"nightcall", black:"beans"}});
+          G.api.kongregate.services.showFeedPostBox({content: "Mon groupe a atteint un nouveau lieu : la Croisée du Moulin ! Cliquez ici pour obtenir votre récompense !", image_uri: "http://i.imgur.com/zKOid.gif", kv_params:{kavinsky:"nightcall", black:"beans"}}, generateShoutCallback("Feed Post (O)"));
         });
       });
       add(b);
@@ -19,7 +19,7 @@ package
       b = new FlxButton(0, b.y + b.height, "Feed Post (S)", function():void {
         printTheError(function():void {
           FlxG.log("* showFeedPostBox with string");
-          G.api.kongregate.services.showFeedPostBox("Super Feed Post! (S)");
+          G.api.kongregate.services.showFeedPostBox("Super Feed Post! (S)", generateShoutCallback("Feed Post (S)"));
         });
       });
       add(b);
@@ -27,7 +27,7 @@ package
       b = new FlxButton(0, b.y + b.height + 10, "PM Box (O)", function():void {
         printTheError(function():void {
           FlxG.log("* showInvitationBox with object");
-          G.api.kongregate.services.showInvitationBox({content: "Test PM (O)", image_uri: "http://i.imgur.com/zKOid.gif"});
+          G.api.kongregate.services.showInvitationBox({content: "Test PM (O)", image_uri: "http://i.imgur.com/zKOid.gif"}, generateShoutCallback("PM Box (O)"));
         });
       });
       add(b);
@@ -35,23 +35,23 @@ package
       b = new FlxButton(0, b.y + b.height, "PM Box (S)", function():void {
         printTheError(function():void {
           FlxG.log("* showInvitationBox with string");
-          G.api.kongregate.services.showInvitationBox("Test PM (S)");
+          G.api.kongregate.services.showInvitationBox("Test PM (S)", generateShoutCallback("PM Box (O)"));
         });
       });
       add(b);
 
       b = new FlxButton(100, 10, "Shout Box (O)", function():void {
         printTheError(function():void {
-          FlxG.log("* showShoutBox with string");
-          G.api.kongregate.services.showShoutBox({content: "Test Shout (O)"});
+          FlxG.log("* showShoutBox with object");
+          G.api.kongregate.services.showShoutBox({content: "Test Shout (O)"}, generateShoutCallback("Shout Box (O)"));
         });
       });
       add(b);
 
       b = new FlxButton(b.x, b.y + b.height, "Shout Box (S)", function():void {
         printTheError(function():void {
-          FlxG.log("* showShoutBox with object");
-          G.api.kongregate.services.showShoutBox("Test Shout (S)");
+          FlxG.log("* showShoutBox with string");
+          G.api.kongregate.services.showShoutBox("Test Shout (S)", generateShoutCallback("Shout Box (S)"));
         });
       });
       add(b);
@@ -59,7 +59,7 @@ package
       b = new FlxButton(b.x, b.y + b.height + 10, "PM (O)", function():void {
         printTheError(function():void {
           FlxG.log("* privateMessage with object");
-          G.api.kongregate.services.privateMessage({content: "Test PM (O)"});
+          G.api.kongregate.services.privateMessage({content: "Test PM (O)"}, generateShoutCallback("PM (O)"));
         });
       });
       add(b);
@@ -67,7 +67,7 @@ package
       b = new FlxButton(b.x, b.y + b.height, "PM (S)", function():void {
         printTheError(function():void {
           FlxG.log("* privateMessage with string");
-          G.api.kongregate.services.privateMessage("Test PM (S)");
+          G.api.kongregate.services.privateMessage("Test PM (S)", generateShoutCallback("PM (S)"));
         });
       });
       add(b);
@@ -120,6 +120,17 @@ package
       add(b);
 
       FlxG.mouse.show();
+    }
+
+    public function generateShoutCallback(title:String):Function {
+      return function(msg:Object):void {
+        FlxG.log("=* Callback *=");
+        FlxG.log(title);
+        FlxG.log("type: " + msg.type);
+        FlxG.log("recipients: " + msg.recipients);
+        FlxG.log("success: " + msg.success);
+        FlxG.log("error: " + msg.error);
+      }
     }
 
     public function onPurchaseResult(result:Object):void {
