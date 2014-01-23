@@ -1,6 +1,6 @@
 API Changes tests
 
-BUILDING THE SWF
+Building the SWF
 ================
 
 Install Flex 4
