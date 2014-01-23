@@ -29,6 +29,6 @@ Build
 
     `mxmlc src/DerpGame.as -static-link-runtime-shared-libraries=true -o derp.swf`
 
-*Note: If you want trace output to show up or use* `fdb` *to debug, you need to compile with the* `-debug` *option:* `mxmlc src/DerpGame.as -static-link-runtime-shared-libraries=true -debug -o derp.swf`
+*Note: If you want* `trace` *output to show up or use* `fdb` *to debug, you need to compile with the* `-debug` *option:* `mxmlc src/DerpGame.as -static-link-runtime-shared-libraries=true -debug -o derp.swf`
 
 [1]: http://www.adobe.com/devnet/flex/flex-sdk-download.html "Adobe Flex SDK"
