@@ -1,4 +1,7 @@
-API Changes tests
+Kongregate API Tester
+=====================
+
+A small test flex "game" written in flixel to exercise various functionality of the Kongregate flash API.
 
 Building the SWF
 ================
