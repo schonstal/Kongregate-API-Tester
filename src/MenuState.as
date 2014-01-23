@@ -2,6 +2,7 @@ package
 {
   import org.flixel.*;
   import flash.display.StageDisplayState;
+  import flash.net.*;
 
   public class MenuState extends FlxState
   {
@@ -115,6 +116,17 @@ package
             FlxG.log("Roundness: " + G.api.paramObj.kv_roundness);
             FlxG.log("Softness: " + G.api.paramObj.kv_softness);
           }
+        });
+      });
+      add(b);
+
+      b = new FlxButton(FlxG.width - b.width, b.y + b.height, "GET Request", function():void {
+        printTheError(function():void {
+          var url:String = "http://www.kongregate.com/accounts/schonstal/badges.json";
+          var request:URLRequest = new URLRequest(url);
+
+          var loader:URLLoader = new URLLoader();
+          loader.load(request);
         });
       });
       add(b);
